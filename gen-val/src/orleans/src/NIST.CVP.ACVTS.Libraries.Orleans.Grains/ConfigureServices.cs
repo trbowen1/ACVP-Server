@@ -47,6 +47,7 @@ using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.IKEv1;
 using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.IKEv2;
 using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.PBKDF;
 using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.SNMP;
+using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.SPDM;
 using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.SRTP;
 using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.SSH;
 using NIST.CVP.ACVTS.Libraries.Crypto.Common.KDF.Components.TLS;
@@ -106,6 +107,7 @@ using NIST.CVP.ACVTS.Libraries.Crypto.RSA.PrimeGenerators;
 using NIST.CVP.ACVTS.Libraries.Crypto.RSA.Signatures;
 using NIST.CVP.ACVTS.Libraries.Crypto.SHA.NativeFastSha;
 using NIST.CVP.ACVTS.Libraries.Crypto.SNMP;
+using NIST.CVP.ACVTS.Libraries.Crypto.SPDM;
 using NIST.CVP.ACVTS.Libraries.Crypto.SRTP;
 using NIST.CVP.ACVTS.Libraries.Crypto.SSH;
 using NIST.CVP.ACVTS.Libraries.Crypto.Symmetric.BlockModes;
@@ -312,6 +314,7 @@ namespace NIST.CVP.ACVTS.Libraries.Orleans.Grains
 
             svc.AddTransient<IHkdfFactory, HkdfFactory>();
             svc.AddSingleton<ITLsKdfFactory_v1_3, TlsKdfFactoryV13>();
+            svc.AddSingleton<ISpdmKdfFactory, SpdmKdfFactory>();
             #endregion Crypto Registrations
         }
 

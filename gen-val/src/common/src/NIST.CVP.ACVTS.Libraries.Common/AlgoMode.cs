@@ -360,6 +360,8 @@ namespace NIST.CVP.ACVTS.Libraries.Common
         [EnumMember(Value = "TupleHash-128-1.0")]
         TupleHash_128_v1_0,
         [EnumMember(Value = "TupleHash-256-1.0")]
-        TupleHash_256_v1_0
+        TupleHash_256_v1_0,
+        [EnumMember(Value = "SPDM-v1.x-KDF-DSP0274")]
+        Spdm_v1_x
     }
 }

@@ -24,6 +24,8 @@ namespace NIST.CVP.ACVTS.Libraries.Oracle.Abstractions
         Task<HkdfResult> GetHkdfCaseAsync(HkdfParameters param);
         Task<TlsKdfv13Result> GetTlsv13CaseAsync(TlsKdfv13Parameters param);
 
+        Task<SpdmKdfResult> GetSpdmCaseAsync(SpdmKdfParameters param);
+
         Task<KdfKmacResult> GetKdfKmacCaseAsync(KdfKmacParameters param);
     }
 }

@@ -282,5 +282,22 @@ namespace NIST.CVP.ACVTS.Libraries.Crypto.Oracle
                 return await GetTlsv13CaseAsync(param);
             }
         }
+
+        public async Task<SpdmKdfResult> GetSpdmCaseAsync(SpdmKdfParameters param)
+        {
+            try
+            {
+                var observableGrain =
+                    await GetObserverGrain<IObserverSpdmKdfGrain, SpdmKdfResult>();
+                await GrainInvokeRetryWrapper.WrapGrainCall(observableGrain.Grain.BeginWorkAsync, param, LoadSheddingRetries);
+
+                return await observableGrain.ObserveUntilResult();
+            }
+            catch (OriginalClusterNodeSuicideException ex)
+            {
+                _logger.Warn(ex, $"{ex.Message}{Environment.NewLine}Restarting grain with {param.GetType()} parameter: {JsonConvert.SerializeObject(param)}");
+                return await GetSpdmCaseAsync(param);
+            }
+        }
     }
 }
